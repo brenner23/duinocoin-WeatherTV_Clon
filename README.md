@@ -1,8 +1,7 @@
 # NMTV 1.54 – Duino-Coin Miner (PlatformIO)
 
-**Master-Version: 4.8**  
 **Stand: 16.09.2026**  
-**Hardware-Basis:** ESP32 Dual-Core + ST7789 240×240
+**Hardware-Basis:** ESP8266 Dual-Core + ST7789 240×240
 
 Diese Version ist die aktuelle NMTV-Masterbasis für PlatformIO. Sie kombiniert den Duino-Coin-Miner mit einer kompakten 240×240-Anzeige, lokalem Web-Dashboard und zusätzlichen Diagnosefunktionen für den Dual-Core-Betrieb.
 
