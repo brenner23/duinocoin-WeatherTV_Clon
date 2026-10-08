@@ -1,7 +1,7 @@
 # WeatherTV-Clon – Duino-Coin Miner (ESP8266, PlatformIO)
 
 **Stand: 16.09.2026**  
-**Hardware-Basis:** ESP8266 (ESP-12F, 4 MB bzw. 1 MB Flash) + ST7789 240×240
+**Hardware-Basis:** ESP8266-Modul ESP-12F (4 MB Flash) + ST7789 240×240
 
 Duino-Coin-Miner für die kleinen ESP8266-Wetteranzeigen (GeekMagic „SmallTV“ in Gelb, schwarze Nachbau-Boards und HelloCube). Die Version kombiniert den Miner mit einer kompakten 240×240-Anzeige, lokalem Web-Dashboard, OTA-Updates und einer Crash-Blackbox.
 
@@ -36,7 +36,7 @@ Die Hauptanzeige zeigt die wichtigsten Minerwerte direkt auf dem 240×240-Displa
 |---|---|---|
 | `Yellow` / `Yellow_ota` | ESP-12E/F, 4 MB | gelbes Original-Board |
 | `Black4M` / `Black_ota4M` | ESP-12E/F, 4 MB | schwarzes Bastel-Board (Standard) |
-| `Black` / `Black_ota` | ESP-01, 1 MB | schwarzes Board mit 1 MB Flash, 64 KB SPIFFS |
+| `Black` / `Black_ota` | ESP-01, 1 MB | ältere Variante für Boards mit nur 1 MB Flash (64 KB SPIFFS) |
 | `Cube_USB` / `Cube_OTA` | ESP-12E/F, 4 MB | HelloCube – setzt das Flag `CUBE_MIRROR`; die Spiegelung selbst ist in dieser Version noch nicht im Code umgesetzt |
 
 Die `*_ota`-Umgebungen flashen über das Netzwerk – IP-Adresse (`upload_port`) und OTA-Passwort (`--auth`) in `platformio.ini` an das eigene Gerät anpassen.
