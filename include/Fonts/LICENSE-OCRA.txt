@@ -1,0 +1,11 @@
+OCRA.ttf - OCR-A font
+=====================
+
+Font file by Matthew Skala (2011-12), based on code by Richard B. Wales (1988-89)
+and Tor Lillqvist (embedded copyright notice of the font).
+
+Matthew Skala: "Any copyright claims by Matthew Skala on these files are hereby
+released to the public domain."  (https://tsukurimashou.org/ocr.pdf)
+
+The OCR-A font is also distributed by Debian as package "fonts-ocr-a"
+under "Public Domain" (https://appstream.debian.org/sid/main/metainfo/fonts-ocr-a.html).

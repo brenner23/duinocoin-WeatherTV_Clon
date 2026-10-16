@@ -1,0 +1,7 @@
+# Build-Ausgaben und Binaerdateien nie ins Repo
+.pio/
+.vscode/
+*.bin
+*.elf
+*.map
+*.hex
