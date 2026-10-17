@@ -18,6 +18,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7789.h>
 #include <Fonts/ArchivoNB15pt7b.h>
+#include <Fonts/ArchivoNB12pt7b.h>
 #include <Fonts/ArchivoNB20pt7b.h>
 #include <Fonts/ArchivoNB30pt7b.h>
 #include "pins.h"
@@ -110,6 +111,9 @@ static int16_t nm_gfx_width(const String &text, const GFXfont *font) {
   tft.setFont();
   return (int16_t)w;
 }
+
+// "DUCO" rechtsbuendig in der Guthaben-Box (Archivo ist bei Buchstaben breiter als die alte Schrift).
+static int16_t nm_duco_x() { return 240 - 11 - nm_gfx_width("DUCO", &ArchivoNB12pt7b); }
 
 static void nm_gfx_center(const String &text, int16_t centerX, int16_t baseline,
                           const GFXfont *font, uint16_t color) {
@@ -471,9 +475,9 @@ static void nm_draw_static_dashboard() {
   tft.fillRect(0, 0, 240, 27, C_PANEL2);
   nm_gfx_text("DUINO-COIN", 7, 23, &ArchivoNB15pt7b, C_ACCENT);
 
-  // Guthabenfeld. DUCO bleibt an deiner manuell eingestellten Position.
+  // Guthabenfeld. DUCO rechtsbuendig (freie Schrift ist breiter als die alte).
   tft.fillRoundRect(5, 30, 230, 39, 8, C_PANEL);
-  nm_gfx_text("DUCO", 186, 61, &ArchivoNB15pt7b, C_TEXT);
+  nm_gfx_text("DUCO", nm_duco_x(), 61, &ArchivoNB12pt7b, C_TEXT);
 
   // Reihe 1
   const int16_t leftX  = 5;
@@ -612,16 +616,16 @@ void display_mining_results(String hashrate_s,
   if (balanceText != lastBalance) {
     tft.fillRoundRect(5, 30, 230, 39, 8, C_PANEL);
 
+    // So gross wie moeglich, ohne in "DUCO" zu laufen (20 -> 15 -> 12 pt).
+    const int16_t room = nm_duco_x() - 9 - 5;
     const GFXfont *balanceFont = &ArchivoNB20pt7b;
-    if (nm_gfx_width(balanceText, balanceFont) > 174) {
-      balanceFont = &ArchivoNB15pt7b;
-    }
+    if (nm_gfx_width(balanceText, balanceFont) > room) balanceFont = &ArchivoNB15pt7b;
+    if (nm_gfx_width(balanceText, balanceFont) > room) balanceFont = &ArchivoNB12pt7b;
 
     nm_gfx_text(balanceText, 9, 61, balanceFont,
                 duco_wallet_valid ? C_ACCENT : C_MUTED);
 
-    // Deine manuelle DUCO-Position bleibt exakt erhalten.
-    nm_gfx_text("DUCO", 186, 61, &ArchivoNB15pt7b, C_TEXT);
+    nm_gfx_text("DUCO", nm_duco_x(), 61, &ArchivoNB12pt7b, C_TEXT);
     lastBalance = balanceText;
   }
 
